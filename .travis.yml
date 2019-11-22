@@ -14,4 +14,5 @@ before_install:
     - conda install -y -c bioconda -c conda-forge snakemake
 
 script:
+    - bash test_homework10.sh
     - snakemake
