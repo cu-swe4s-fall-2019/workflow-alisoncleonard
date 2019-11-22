@@ -38,10 +38,10 @@ def main():
     parser = argparse.ArgumentParser(description='boxplot gene count data '
                                      'by tissue', prog='box.py')
 
-    parser.add_argument('--tissues', nargs = '*', type=str,
+    parser.add_argument('--tissues', nargs='*', type=str,
                         help='tissues to plot', required=True)
 
-    parser.add_argument('--genes', nargs = '*', type=str, help='Genes to plot',
+    parser.add_argument('--genes', nargs='*', type=str, help='Genes to plot',
                         required=True)
 
     parser.add_argument('--out_file_name', type=str, help='Name for '
@@ -80,9 +80,7 @@ def main():
                 print('Could not find input data file')
                 sys.exit(1)
 
-
             counts_by_gene_list.append(counts_list)
-
 
         width = 10
         height = 3
@@ -100,6 +98,7 @@ def main():
         plt.yscale('log')
 
         plt.savefig(str(tissue) + outfile, bbox_inches='tight')
+
 
 if __name__ == '__main__':
     main()
