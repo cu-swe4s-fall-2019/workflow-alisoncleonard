@@ -13,15 +13,15 @@ def main():
 
     Parameters
     -----------
-    --gene_count_file : A GTEx_Analysis file ending in '.gct.gz'. Contains
+    gene_count_file : A GTEx_Analysis file ending in '.gct.gz'. Contains
     measured gene expression level by tissue type. Input as a string.
     ex. 'GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz'
 
-    --gene_name : The gene of interest. Input as a string. A full
+    gene_name : The gene of interest. Input as a string. A full
     list of available genes can be found here: https://github.com/swe4s/
     lectures/blob/master/data_integration/gtex/acmg_genes.txt
 
-    --output_file_name: File name to save the output data file.
+    output_file_name_base: File name to save the output data file.
 
     Returns
     --------
@@ -34,14 +34,13 @@ def main():
     parser = argparse.ArgumentParser(description='extract gene count data from'
                                      'gtex files', prog='get_gene_counts.py')
 
-    parser.add_argument('--gene_count_file', type=str, help='Name of gene'
-                        'count input file', required=True)
+    parser.add_argument('gene_count_file', type=str, help='Name of gene'
+                        'count input file')
 
-    parser.add_argument('--gene_name', type=str, help='Gene of interest',
-                        required=True)
+    parser.add_argument('gene_name', type=str, help='Gene of interest')
 
-    parser.add_argument('--output_file_name', type=str, help='Name for saved'
-                        'output file', required=True)
+    parser.add_argument('output_file_name_base', type=str, help='Name for '
+                        'saved output file')
 
     args = parser.parse_args()
 
@@ -63,7 +62,7 @@ def main():
 
     gene_name_col = 1
 
-    output_file_name = args.output_file_name
+    output_file_name = str(gene_name) + str(args.output_file_name_base)
     outfile = open(output_file_name, 'w')
 
     gzip_file = gzip.open(data_file_name, 'rt')

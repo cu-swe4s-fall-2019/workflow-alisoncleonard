@@ -12,15 +12,15 @@ def main():
 
     Parameters
     -----------
-    --sample_input_file : A txt file containing sample identification
+    sample_input_file : A txt file containing sample identification
     information, corresponding to data in the .gz file. Input as a string.
     ex. 'GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt'
 
-    --tissue_group : Data is displayed by tissue, and can be sorted by
+    tissue_group : Data is displayed by tissue, and can be sorted by
     tissue groups (SMTS) or tissue types (SMTSD). Input either 'SMTS' or
     'SMTSD' as a string.
 
-    --output_file_name: File name to save the output data fle.
+    output_file_name_base: Base file name to save the output data fle.
 
     Returns
     --------
@@ -31,15 +31,13 @@ def main():
     parser = argparse.ArgumentParser(description='extract sample id info',
                                      prog='get_tissue_samples.py')
 
-    parser.add_argument('--sample_info_file', type=str, help='Name of sample'
-                        'info input file', required=True)
+    parser.add_argument('sample_info_file', type=str, help='Name of sample'
+                        'info input file')
+    parser.add_argument('tissue_group', type=str, help='Select either'
+                        'tissue groups (SMTS) or tissue types (SMTSD)')
 
-    parser.add_argument('--tissue_group', type=str, help='Select either'
-                        'tissue groups (SMTS) or tissue types (SMTSD)',
-                        required=True)
-
-    parser.add_argument('--output_file_name', type=str, help='Name for saved'
-                        'output file', required=True)
+    parser.add_argument('output_file_name_base', type=str, help='Name for '
+                        'saved output file')
 
     args = parser.parse_args()
 
@@ -56,7 +54,7 @@ def main():
     # chose either tissue groups (SMTS) or tissue types (SMTSD)
     group_col_name = args.tissue_group
 
-    output_file_name = args.output_file_name
+    output_file_name = str(group_col_name) + str(args.output_file_name_base)
     outfile = open(output_file_name, 'w')
 
     # SAMPID is from column 0, SMTS column 5, SMTSD column 6
