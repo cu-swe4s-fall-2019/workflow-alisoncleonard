@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	get_tissue_samples
+	1
+
+[Thu Nov 21 20:58:33 2019]
+rule get_tissue_samples:
+    input: GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+    output: SMTS_sampids.txt
+    jobid: 0
+
+[Thu Nov 21 20:58:33 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /Users/alisonleonard/swe4s_homework/homework10/.snakemake/log/2019-11-21T205832.977469.snakemake.log

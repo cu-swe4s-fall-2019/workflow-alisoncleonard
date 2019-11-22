@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	boxplot
+	1	get_gene_counts
+	1	get_tissue_samples
+	4
+
+[Thu Nov 21 20:59:29 2019]
+rule get_tissue_samples:
+    input: GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+    output: SMTS_sampids.txt
+    jobid: 2
+
+[Thu Nov 21 20:59:29 2019]
+Finished job 2.
+1 of 4 steps (25%) done
+
+[Thu Nov 21 20:59:29 2019]
+rule get_gene_counts:
+    input: GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct.gz
+    output: SDHB_counts.txt, MEN1_counts.txt, KCNH2_counts.txt, MSH2_counts.txt, MYL2_counts.txt, BRCA2_counts.txt
+    jobid: 3
+
+[Thu Nov 21 20:59:32 2019]
+Finished job 3.
+2 of 4 steps (50%) done
+
+[Thu Nov 21 20:59:32 2019]
+rule boxplot:
+    input: SMTS_sampids.txt, SDHB_counts.txt, MEN1_counts.txt, KCNH2_counts.txt, MSH2_counts.txt, MYL2_counts.txt, BRCA2_counts.txt
+    output: Brain_plot.png, Heart_plot.png, Blood_plot.png, Skin_plot.png
+    jobid: 1
+
+[Thu Nov 21 21:00:08 2019]
+Finished job 1.
+3 of 4 steps (75%) done
+
+[Thu Nov 21 21:00:08 2019]
+localrule all:
+    input: Brain_plot.png, Heart_plot.png, Blood_plot.png, Skin_plot.png
+    jobid: 0
+
+[Thu Nov 21 21:00:08 2019]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: /Users/alisonleonard/swe4s_homework/homework10/.snakemake/log/2019-11-21T205929.091196.snakemake.log

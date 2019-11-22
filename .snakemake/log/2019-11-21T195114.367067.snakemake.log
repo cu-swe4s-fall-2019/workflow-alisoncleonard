@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	boxplot
+	1	get_gene_counts
+	1	get_tissue_samples
+	4
+
+[Thu Nov 21 19:51:14 2019]
+rule get_tissue_samples:
+    input: GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+    output: SMTS_sampids.txt
+    jobid: 2
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 18 of /Users/alisonleonard/swe4s_homework/homework10/Snakefile:
+Missing files after 5 seconds:
+SMTS_sampids.txt
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/alisonleonard/swe4s_homework/homework10/.snakemake/log/2019-11-21T195114.367067.snakemake.log

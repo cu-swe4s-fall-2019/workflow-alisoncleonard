@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	boxplot
+	1	get_gene_counts
+	1	get_tissue_samples
+	4
+
+[Thu Nov 21 20:12:25 2019]
+rule get_tissue_samples:
+    input: GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+    output: SMTS_sampids.txt
+    jobid: 2
+
+[Thu Nov 21 20:12:25 2019]
+Error in rule get_tissue_samples:
+    jobid: 2
+    output: SMTS_sampids.txt
+    shell:
+        python get_tissue_samples.py GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt $TISSUE_GROUP _sampids.txt; done
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/alisonleonard/swe4s_homework/homework10/.snakemake/log/2019-11-21T201224.139148.snakemake.log
